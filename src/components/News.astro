@@ -1,0 +1,39 @@
+---
+const NEWS_API_URL = `https://newsdata.io/api/1/latest?apikey=pub_49978499aa819a0bdca5c2e0d353d750e7067&country=cl&language=es`;
+
+const fetchNews = async () => {
+  const response = await fetch(NEWS_API_URL);
+  const data = await response.json();
+  return data.results;
+};
+
+const articles = await fetchNews();
+---
+
+<section class="w-screen mx-0 p-4 bg-red-400">
+  <h1 class="text-4xl mt-2 text-center font-bold mb-4 text-white">Noticias</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {
+      articles.map((article) => (
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-xl font-semibold mb-2">{article.title}</h2>
+          {article.image_url && (
+            <img
+              src={article.image_url}
+              alt={article.title}
+              class="w-full h-auto mb-4 rounded-lg"
+            />
+          )}
+
+          <a
+            href={article.link}
+            target="_blank"
+            class="text-blue-500 hover:underline"
+          >
+            Leer más
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>

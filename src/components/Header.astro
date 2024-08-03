@@ -1,0 +1,68 @@
+---
+
+---
+
+<header
+  class="flex flex-col lg:flex-row items-center justify-around p-4 bg-black"
+>
+  <img
+    src="/logo-blanco.png"
+    alt="Gente Comunicaciones"
+    class="w-20 h-auto mb-4 lg:mb-0"
+  />
+
+  <nav class="w-auto lg:flex-1 justify-center">
+    <ul class="flex flex-col lg:flex-row justify-around text-white">
+      <li class="mb-2 lg:mb-0">
+        <a
+          href="/programas"
+          class="text-center px-4 py-2 block hover:bg-gray-800 rounded-md"
+          >Programas</a
+        >
+      </li>
+      <li class="mb-2 lg:mb-0">
+        <a
+          href="/servicios"
+          class="text-center px-4 py-2 block hover:bg-gray-800 rounded-md"
+          >Servicios</a
+        >
+      </li>
+      <li class="mb-2 lg:mb-0">
+        <a
+          href="/contacto"
+          class="text-center px-4 py-2 block hover:bg-gray-800 rounded-md"
+          >Contacto</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <a
+    class="text-white font-extrabold mt-4 lg:mt-0 bg-red-700 p-4 rounded-xl hover:bg-white hover:text-red-700"
+    id="liveButton"
+  >
+    EN VIVO
+    <img src="/live.svg" alt="Play" class="w-6 h-auto inline-block" />
+  </a>
+  <div class="flex justify-center items-center mt-8 lg:mt-0 lg:ml-3 w-auto">
+    <audio
+      id="radioPlayer"
+      preload="metadata"
+      src="https://servers58.com/proxy/sc_gentefmcl?mp=/;"
+      title="Sound HD"
+      class="hidden"
+      controls></audio>
+  </div>
+</header>
+
+<script>
+  document
+    .getElementById("liveButton")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      const audioPlayer = document.getElementById("radioPlayer");
+      if (audioPlayer instanceof HTMLAudioElement) {
+        audioPlayer.classList.remove("hidden");
+        audioPlayer.play();
+      }
+    });
+</script>

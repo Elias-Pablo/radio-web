@@ -1,0 +1,405 @@
+<div class="flex justify-center bg-green-800">
+  <span
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-speakerphone"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M18 8a3 3 0 0 1 0 6"></path><path
+        d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5"></path><path
+        d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8"
+      ></path></svg
+    ></span
+  >
+  <h1 class="">Ahora en directo:</h1>
+  <div id="current-program" class="font-bold"></div>
+  <span
+    ><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-speakerphone"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M18 8a3 3 0 0 1 0 6"></path><path
+        d="M10 8v11a1 1 0 0 1 -1 1h-1a1 1 0 0 1 -1 -1v-5"></path><path
+        d="M12 8h0l4.524 -3.77a.9 .9 0 0 1 1.476 .692v12.156a.9 .9 0 0 1 -1.476 .692l-4.524 -3.77h-8a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h8"
+      ></path></svg
+    ></span
+  >
+</div>
+
+<script>
+  const schedule = {
+    Monday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa 100% Natural" },
+      {
+        start: "10:00",
+        end: "13:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "13:00",
+        end: "15:00",
+        program: "Programa El Basilón Tropical",
+      },
+      {
+        start: "15:00",
+        end: "16:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "16:00",
+        end: "18:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "18:00",
+        end: "19:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "19:00",
+        end: "20:00",
+        program: "Programa Dos En El Café",
+      },
+      {
+        start: "20:00",
+        end: "21:00",
+        program: "Programa Manita Deportes",
+      },
+      {
+        start: "21:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Tuesday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa 100% Natural" },
+      {
+        start: "10:00",
+        end: "13:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "13:00",
+        end: "15:00",
+        program: "Programa El Basilón Tropical",
+      },
+      {
+        start: "15:00",
+        end: "16:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "16:00",
+        end: "18:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "18:00",
+        end: "19:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "19:00",
+        end: "20:00",
+        program: "Programa Dos En El Café",
+      },
+      {
+        start: "20:00",
+        end: "21:00",
+        program: "Programa Manita Deportes",
+      },
+      {
+        start: "21:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Wednesday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa 100% Natural" },
+      {
+        start: "10:00",
+        end: "13:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "13:00",
+        end: "14:00",
+        program: "Programa El Basilón Tropical",
+      },
+      {
+        start: "14:00",
+        end: "15:00",
+        program:
+          "Estás escuchando la programación de Conversando con Minera Valle Central",
+      },
+      {
+        start: "15:00",
+        end: "16:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "16:00",
+        end: "18:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "18:00",
+        end: "19:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "19:00",
+        end: "20:00",
+        program: "Programa Dos En El Café",
+      },
+      {
+        start: "20:00",
+        end: "21:00",
+        program: "Programa Manita Deportes",
+      },
+      {
+        start: "21:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Thursday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa 100% Natural" },
+      {
+        start: "10:00",
+        end: "13:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "13:00",
+        end: "15:00",
+        program: "Programa El Basilón Tropical",
+      },
+      {
+        start: "15:00",
+        end: "16:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "16:00",
+        end: "18:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "18:00",
+        end: "19:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "19:00",
+        end: "20:00",
+        program: "Programa Dos En El Café",
+      },
+      {
+        start: "20:00",
+        end: "21:00",
+        program: "Programa Manita Deportes",
+      },
+      {
+        start: "21:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Friday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa 100% Natural" },
+      {
+        start: "10:00",
+        end: "13:00",
+        program: "Programación desde La Ilustre Municipalidad de Requínoa",
+      },
+      {
+        start: "13:00",
+        end: "15:00",
+        program: "Programa El Basilón Tropical",
+      },
+      {
+        start: "15:00",
+        end: "18:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+
+      {
+        start: "18:00",
+        end: "19:00",
+        program: "Programa Gente Femenina",
+      },
+      {
+        start: "19:00",
+        end: "20:00",
+        program: "Programa Dos En El Café",
+      },
+      {
+        start: "20:00",
+        end: "21:00",
+        program: "Programa Manita Deportes",
+      },
+      {
+        start: "21:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Saturday: [
+      {
+        start: "00:01",
+        end: "08:30",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "08:30",
+        end: "9:00",
+        program: "Estás escuchando Radio Santec",
+      },
+      {
+        start: "09:00",
+        end: "10:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "10:00", end: "12:00", program: "Programa Entre Nos" },
+      {
+        start: "12:00",
+        end: "13:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      {
+        start: "13:00",
+        end: "14:00",
+        program: "Programa Mujer es Hora de Hablar",
+      },
+      {
+        start: "14:00",
+        end: "15:00",
+        program: "Programa Recuperemos Coltauco",
+      },
+      {
+        start: "15:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+    Sunday: [
+      {
+        start: "00:01",
+        end: "09:00",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+      { start: "09:00", end: "10:00", program: "Programa Ven a la Luz" },
+      {
+        start: "10:00",
+        end: "11:00",
+        program: "Programa La Voz de Salvación",
+      },
+      {
+        start: "11:00",
+        end: "12:00",
+        program: "Programa Renacer en Cristo",
+      },
+      {
+        start: "12:00",
+        end: "14:00",
+        program: "Programa Simplemente Chile",
+      },
+      {
+        start: "14:00",
+        end: "15:00",
+        program: "Programa El Alfarero",
+      },
+      {
+        start: "15:00",
+        end: "23:59",
+        program: "Estás escuchando la programación de Gente Comunicaciones",
+      },
+    ],
+  };
+
+  function getCurrentTime() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    return `${hours}:${minutes}`;
+  }
+
+  function getCurrentDay() {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    return days[new Date().getDay()];
+  }
+
+  function getCurrentProgram() {
+    const currentDay = getCurrentDay();
+    const currentTime = getCurrentTime();
+
+    if (schedule[currentDay]) {
+      for (const program of schedule[currentDay]) {
+        if (currentTime >= program.start && currentTime < program.end) {
+          return program.program;
+        }
+      }
+    }
+    return "No program scheduled at this time";
+  }
+
+  function updateCurrentProgram() {
+    const program = getCurrentProgram();
+    document.getElementById("current-program").textContent = program;
+  }
+
+  // Actualiza el programa actual al cargar la página
+  updateCurrentProgram();
+
+  // Actualiza el programa actual cada minuto
+  setInterval(updateCurrentProgram, 60000);
+</script>
