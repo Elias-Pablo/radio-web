@@ -1,5 +1,5 @@
 ---
-const NEWS_API_URL = `https://newsdata.io/api/1/latest?apikey=pub_49978499aa819a0bdca5c2e0d353d750e7067&country=cl&language=es`;
+const NEWS_API_URL = `https://newsdata.io/api/1/latest?apikey=${import.meta.env.NEWSDATA_API_KEY}&country=cl&language=es`;
 
 const fetchNews = async () => {
   const response = await fetch(NEWS_API_URL);

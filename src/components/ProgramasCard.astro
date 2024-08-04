@@ -1,0 +1,107 @@
+---
+const programas = [
+  {
+    title: "Buen Día mi Gente",
+    autor: "Ricardo Hidalgo Jara",
+    time: "Lunes a Viernes de 07:00 a 09:00 hrs.",
+    description:
+      "El programa matinal de Gente FM, con la mejor música, noticias y entretención.",
+    image: "/buen-dia-mi-gente-logo.png",
+  },
+  {
+    title: "Gente Femenina",
+    autor: "Lorena Maribel Contreras Ruz",
+    time: "Viernes de 18:00 a 19:00 hrs.",
+    description:
+      "El programa de las mujeres que se toma Gente Comunicaciones para informar, entretener y acompañar a las mujeres de la región.",
+    image: "gentefemenina.png",
+  },
+  {
+    title: "Gente Urbana",
+    autor: "Vania Elizabeth Contreras",
+    time: "Viernes de 17:00 a 18:00 hrs.",
+    description:
+      "Gente Urbana, un programa de música urbana para dar a conocer artistas destacados de Rengo y la región.",
+    image: "gente-urbana.png",
+  },
+  {
+    title: "Manita Deportes",
+    autor: "Mauricio Pérez y Patricio Ramírez",
+    time: "Lunes a Viernes de 20:00 a 21:00 hrs.",
+    description:
+      "Sigue todas las noticias deportivas de la región y el mundo en Manita Deportes.",
+    image: "/Logo-Manita.png",
+  },
+  {
+    title: "Dos en el Café",
+    autor: "Patricio Rojas Caro",
+    time: "Lunes a Viernes de 18:00 a 19:00 hrs.",
+    description:
+      "Dos en el Café, un programa de conversación para acompañar la hora del café.",
+    image: "/logo2cafe.png",
+  },
+  {
+    title: "El Bacilón Tropical",
+    autor: "Peter Duarte",
+    time: "Lunes a Viernes de 13:00 a 15:00 hrs.(Miércoles de 13:00 a 14:00 hrs.)",
+    description:
+      "El mejor programa de música tropical para acompañar tus tardes con la conducción del entretenido, historíco y gran Peter Duarte.",
+    image: "/logo-blanco.png",
+  },
+  {
+    title: "Conversando con Minera Valle Central",
+    autor: "Mariely Mardones",
+    time: "Miércoles de 14:00 a 15:00 hrs.",
+    description:
+      "Conversando con Minera Valle Central, un programa de conversación enfocado en Minera Valle Central, interesantes invitados y mucho más.",
+    image: "/minera_valle_central_chile_logo.jpeg",
+  },
+  {
+    title: "Programación de la Ilustre Municipalidad de Requínoa",
+    autor: "Ilustre Municipalidad de Requínoa",
+    time: "Lunes a Viernes de 10:00 a 13:00 hrs. y de 16:00 a 18:00 hrs. (Viernes solo de 10:00 a 13:00 hrs.)",
+    description:
+      "Programación de la Ilustre Municipalidad de Requínoa, con la mejor música, noticias y entretención.",
+    image: "muni-requinoa.jpeg",
+  },
+  {
+    title: "Entre Nos",
+    autor: "Patricio Rojas Caro",
+    time: "Sábados de 10:00 a 12:00 hrs.",
+    description:
+      "Entre Nos, un programa de conversación para acompañar tus mañanas de sábado.",
+    image: "/logo-blanco.png",
+  },
+];
+---
+
+<h1 class="text-4xl text-center font-bold text-white my-5">
+  Nuestros Programas
+</h1>
+<div
+  class="bg-pink-600 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4"
+>
+  {
+    programas.map((programa) => (
+      <div
+        class="bg-gray-800 p-4 rounded-lg flex flex-col justify-center items-center
+      "
+      >
+        <img
+          src={programa.image}
+          alt={programa.title}
+          class="w-32  h-auto   rounded-lg"
+        />
+        <div class="w-3/4 flex flex-col items-start">
+          <h2 class="text-xl font-bold text-white mt-4">{programa.title}</h2>
+          <p class="text-sm text-gray-400">
+            <span class="font-bold">Conduce: </span>
+            {programa.autor}
+          </p>
+          <p class="text-xs text-gray-400 italic">{programa.time}</p>
+          <p class="text-sm text-gray-400  mt-2">{programa.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
