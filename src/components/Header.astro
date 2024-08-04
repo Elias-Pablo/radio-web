@@ -1,5 +1,5 @@
 ---
-
+// Header.astro
 ---
 
 <header
@@ -39,6 +39,7 @@
     </ul>
   </nav>
   <a
+    href="#"
     class="text-white font-extrabold mt-4 lg:mt-0 bg-red-700 p-4 rounded-xl hover:bg-white hover:text-red-700"
     id="liveButton"
   >
@@ -57,14 +58,33 @@
 </header>
 
 <script>
-  document
-    .getElementById("liveButton")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-      const audioPlayer = document.getElementById("radioPlayer");
-      if (audioPlayer instanceof HTMLAudioElement) {
-        audioPlayer.classList.remove("hidden");
-        audioPlayer.play();
-      }
-    });
+  // Este script se ejecutará en el cliente
+  const liveButton = document.getElementById("liveButton");
+  const audioPlayer = document.getElementById("radioPlayer");
+
+  function playAudio() {
+    if (audioPlayer instanceof HTMLAudioElement) {
+      audioPlayer.classList.remove("hidden");
+      audioPlayer.play();
+      localStorage.setItem("isPlaying", "true");
+    }
+  }
+
+  function restoreAudioState() {
+    const isPlaying = localStorage.getItem("isPlaying");
+    if (isPlaying === "true") {
+      playAudio();
+    }
+  }
+
+  liveButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    playAudio();
+  });
+
+  window.addEventListener("DOMContentLoaded", restoreAudioState);
+
+  window.addEventListener("beforeunload", function () {
+    localStorage.setItem("isPlaying", audioPlayer.paused ? "false" : "true");
+  });
 </script>
