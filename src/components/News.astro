@@ -1,37 +1,56 @@
 ---
-const NEWS_API_URL = `https://newsdata.io/api/1/latest?apikey=${import.meta.env.NEWSDATA_API_KEY}&country=cl&language=es`;
+const NEWS_API_URL = `https://newsapi.org/v2/everything?q=Chile&sortBy=publishedAt&pageSize=20&language=es&apiKey=${import.meta.env.NEWS_API_KEY}`;
 
 const fetchNews = async () => {
   const response = await fetch(NEWS_API_URL);
   const data = await response.json();
-  return data.results;
+  return data.articles;
 };
 
 const articles = await fetchNews();
 ---
 
 <section class="w-screen mx-0 p-4 bg-red-400">
-  <h1 class="text-4xl mt-2 text-center font-bold mb-4 text-white">Noticias</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="flex items-center justify-center">
+    <h1 class="text-3xl mt-2 font-bold mb-4 text-white">Noticias</h1><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="ml-2"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"
+      ></path><path d="M8 8l4 0"></path><path d="M8 12l4 0"></path><path
+        d="M8 16l4 0"></path></svg
+    >
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
     {
       articles.map((article) => (
-        <div class="bg-white rounded-lg shadow-md p-6">
-          <h2 class="text-xl font-semibold mb-2">{article.title}</h2>
-          {article.image_url && (
+        <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+          {article.urlToImage && (
             <img
-              src={article.image_url}
+              src={article.urlToImage}
               alt={article.title}
-              class="w-full h-auto mb-4 rounded-lg"
+              class="w-40 h-30 rounded-lg"
             />
           )}
-
-          <a
-            href={article.link}
-            target="_blank"
-            class="text-blue-500 hover:underline"
-          >
-            Leer más
-          </a>
+          <div class="ml-4 w-2/3">
+            <h2 class="text-md font-semibold mb-1">{article.title}</h2>
+            <p class="text-xs mb-2">{article.description}</p>
+            <a
+              href={article.url}
+              target="_blank"
+              class="text-blue-500 hover:underline text-sm"
+            >
+              Leer más
+            </a>
+          </div>
         </div>
       ))
     }

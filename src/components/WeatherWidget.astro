@@ -1,6 +1,4 @@
 ---
-const API_KEY = "YOUR_API_KEY";
-
 const comunas = [
   { name: "Rengo", id: 3873441 },
   { name: "Rancagua", id: 3873775 },
@@ -17,7 +15,6 @@ async function fetchWeatherData(comunaId) {
       `https://api.openweathermap.org/data/2.5/weather?id=${comunaId}&appid=${import.meta.env.OPENWEATHER_API_KEY}&units=metric&lang=es`
     );
 
-    // Verificar si la respuesta es exitosa
     if (!response.ok) {
       throw new Error("Error fetching weather data");
     }
@@ -26,7 +23,7 @@ async function fetchWeatherData(comunaId) {
     return data;
   } catch (error) {
     console.error("Error fetching weather data for ID:", comunaId, error);
-    return null; // Retornar null en caso de error
+    return null;
   }
 }
 
@@ -36,9 +33,27 @@ const weatherData = await Promise.all(
 ---
 
 <div class="bg-blue-300 shadow-md p-6">
-  <h1 class="text-2xl text-white font-semibold mb-6 text-center">
-    Clima en la Región de O'Higgins
-  </h1>
+  <div class="flex items-center justify-center mb-4">
+    <h1 class="text-3xl text-white font-semibold text-center">Clima</h1><svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="30"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="white"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="ml-2"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M4 13.5a4 4 0 1 0 4 0v-8.5a2 2 0 1 0 -4 0v8.5"></path><path
+        d="M4 9h4"></path><path
+        d="M13 16a4 4 0 1 0 0 -8a4.07 4.07 0 0 0 -1 .124"></path><path
+        d="M13 3v1"></path><path d="M21 12h1"></path><path d="M13 20v1"
+      ></path><path d="M19.4 5.6l-.7 .7"></path><path d="M18.7 17.7l.7 .7"
+      ></path></svg
+    >
+  </div>
 
   {
     weatherData.length > 0 ? (
@@ -48,7 +63,6 @@ const weatherData = await Promise.all(
             <h3 class="text-md font-bold mb-2">{comunas[index].name}</h3>
             {data ? (
               <>
-                {/* URL del icono */}
                 <img
                   src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
                   alt={data.weather[0].description}
