@@ -1,21 +1,68 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="Sobre Nosotros - Gente Comunicaciones">
-  <div class="bg-emerald-300 rounded-lg shadow-md p-6 mx-auto">
+  <div class="bg-neutral-600 rounded-lg shadow-md p-6 mx-auto">
     <div class="flex flex-col items-center">
-      <h3 class="text-xl font-semibold mb-4 text-center">Sobre Nosotros</h3>
-      <p class="text-center w-3/4">
-        Somos Gente Comunicaciones, una empresa apasionada y dedicada a informar
-        a la comunidad. Llevamos 2 décadas de experiencia y la comunidad nos
-        reconoce como un medio creíble y cercano.
-      </p>
-      <h3 class="text-xl font-semibold mt-4 mb-2 *:text-center">
-        Nuestro Himno
-      </h3>
-      <p class="text-center mb-4">Brevemente Gente - Florcita Motuda</p>
-      <audio controls class="w-80" src="/himnogente.mp3"> </audio>
+      <div
+        class="flex flex-col items-center bg-amber-200 w-1/2 rounded-xl shadow-xl p-4"
+      >
+        <h3 class="text-xl font-semibold mb-4 text-center">Sobre Nosotros</h3>
+        <p class="text-center">
+          Somos Gente Comunicaciones, una empresa apasionada y dedicada a
+          informar a la comunidad. Llevamos 2 décadas de experiencia y la
+          comunidad nos reconoce como un medio creíble y cercano.
+        </p>
+      </div>
+      <div
+        class="flex flex-col items-center bg-lime-300 mt-4 w-auto rounded-xl shadow-xl p-4"
+      >
+        <h3 class="text-xl font-semibold mb-2 *:text-center">Nuestro Himno</h3>
+        <p class="text-center mb-4">Brevemente Gente - Florcita Motuda</p>
+        <audio controls class="w-80" src="/himnogente.mp3"> </audio>
+      </div>
+      <div
+        class="md:w-1/2 w-full bg-cyan-200 flex p-6 flex-col justify-center items-center rounded-xl mt-4 shadow-xl"
+      >
+        <h3 class="text-xl font-semibold *:text-center mb-4">
+          Nuestra Historia
+        </h3>
+        <div class="flex items-center justify-center">
+          <img
+            src="/logo-antiguo.jpeg"
+            alt="Logo Radio Gente Antiguo"
+            class="md:w-28 w-20 mr-2 h-auto rounded-full"
+          />
+          <p class="md:text-base text-xs text-center w-full">
+            Fundada en 2005 por Daría Ruz Peralta (Q.E.P.D. 1939-2024), Gente
+            Comunicaciones ha sido un referente en la comunidad. Nuestro
+            compromiso es informar con veracidad y objetividad. A lo largo de
+            los años, hemos ido creciendo y adaptándonos a las nuevas
+            tecnologías para seguir siendo un medio confiable y cercano.
+          </p>
+          <img
+            src="/mami.JPG"
+            alt="Daria Ruz Peralta"
+            class="md:w-32 w-24 h-auto ml-2 rounded-full p-2"
+          />
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-center bg-purple-300 w-1/2 mt-4 rounded-xl shadow-xl p-4"
+      >
+        <h3 class="text-xl font-semibold mb-4 text-center">
+          Nuestra Visión y Misión
+        </h3>
+        <p class="text-center">
+          Nuestra visión es ser un medio de comunicación líder en la región,
+          reconocido por su calidad y compromiso con la comunidad. Nuestra
+          misión es informar con veracidad y objetividad, promoviendo la
+          participación ciudadana y el desarrollo de la comunidad.
+        </p>
+      </div>
     </div>
-  </div></Layout
->
+  </div>
+  <Footer />
+</Layout>
