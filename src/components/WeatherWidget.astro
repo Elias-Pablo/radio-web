@@ -68,8 +68,10 @@ const weatherData = await Promise.all(
                   alt={data.weather[0].description}
                   class="mb-2 w-20 h-20"
                 />
-                <p class="text-sm">Temperatura: {data.main?.temp}°C</p>
-                <p class="text-sm">
+                <p class="text-xs md:text-sm">
+                  Temperatura: {data.main?.temp}°C
+                </p>
+                <p class="text-xs md:text-sm">
                   Clima: {data.weather?.[0]?.description || "No disponible"}
                 </p>
               </>
