@@ -30,28 +30,30 @@ const articles = await fetchNews();
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
     {
-      articles.map((article) => (
-        <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
-          {article.urlToImage && (
-            <img
-              src={article.urlToImage}
-              alt={article.title}
-              class="w-40 h-30 rounded-lg"
-            />
-          )}
-          <div class="ml-4 w-2/3">
-            <h2 class="text-md font-semibold mb-1">{article.title}</h2>
-            <p class="text-xs mb-2">{article.description}</p>
-            <a
-              href={article.url}
-              target="_blank"
-              class="text-blue-500 hover:underline text-sm"
-            >
-              Leer más
-            </a>
+      articles
+        .filter((article) => article.title !== "[Removed]") // Filtrar artículos removidos
+        .map((article) => (
+          <div class="bg-white rounded-lg shadow-md p-4 flex items-center">
+            {article.urlToImage && (
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                class="w-40 h-30 rounded-lg"
+              />
+            )}
+            <div class="ml-4 w-2/3">
+              <h2 class="text-md font-semibold mb-1">{article.title}</h2>
+              <p class="text-xs mb-2">{article.description}</p>
+              <a
+                href={article.url}
+                target="_blank"
+                class="text-blue-500 hover:underline text-sm"
+              >
+                Leer más
+              </a>
+            </div>
           </div>
-        </div>
-      ))
+        ))
     }
   </div>
 </section>
