@@ -147,7 +147,12 @@
 
     restoreAudioState();
     window.addEventListener("beforeunload", function () {
-      localStorage.setItem("isPlaying", audioPlayer.paused ? "false" : "true");
+      if (audioPlayer instanceof HTMLAudioElement) {
+        localStorage.setItem(
+          "isPlaying",
+          audioPlayer.paused ? "false" : "true"
+        );
+      }
     });
   });
 </script>
