@@ -68,7 +68,7 @@ function getTemp(temp) {
     weatherData.length > 0 ? (
       <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
         {weatherData.map((data, index) => (
-          <div class="bg-sky-200 p-4 rounded-lg flex flex-col items-center justify-center">
+          <div class="bg-sky-200 p-2 rounded-lg flex flex-col items-center justify-center">
             <h3 class="text-md font-bold mb-2">{comunas[index].name}</h3>
             {data ? (
               <>
@@ -77,10 +77,10 @@ function getTemp(temp) {
                   alt={data.weather[0].description}
                   class="mb-2 w-20 h-20"
                 />
-                <p class="flex text-xs md:text-sm ">
+                <p class="flex flex-col text-xs md:text-sm items-center justify-center">
                   Temperatura:{" "}
                   <span
-                    class={`ml-1 text-xs font-bold  ${getTemp(data.main?.temp)}`}
+                    class={`ml-1 text-xs font-bold md:text-sm ${getTemp(data.main?.temp)}`}
                   >
                     {" "}
                     {data.main?.temp}°C
