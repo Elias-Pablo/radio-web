@@ -30,6 +30,15 @@ async function fetchWeatherData(comunaId) {
 const weatherData = await Promise.all(
   comunas.map((comuna) => fetchWeatherData(comuna.id))
 );
+function getTemp(temp) {
+  if (temp <= 15) {
+    return "text-blue-500"; // Cold: Blue
+  } else if (temp > 15 && temp <= 23) {
+    return "text-yellow-500"; // Warm: Yellow
+  } else {
+    return "text-orange-600"; // Hot: Orange
+  }
+}
 ---
 
 <div class="bg-blue-300 shadow-md p-6">
@@ -59,7 +68,7 @@ const weatherData = await Promise.all(
     weatherData.length > 0 ? (
       <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
         {weatherData.map((data, index) => (
-          <div class="bg-sky-200 p-2 rounded-lg ">
+          <div class="bg-sky-200 p-2 rounded-lg flex flex-col items-center justify-center">
             <h3 class="text-md font-bold mb-2">{comunas[index].name}</h3>
             {data ? (
               <>
@@ -68,11 +77,20 @@ const weatherData = await Promise.all(
                   alt={data.weather[0].description}
                   class="mb-2 w-20 h-20"
                 />
-                <p class="text-xs md:text-sm">
-                  Temperatura: {data.main?.temp}°C
+                <p class="flex text-xs md:text-sm ">
+                  Temperatura:{" "}
+                  <span
+                    class={`ml-1 font-bold text-md ${getTemp(data.main?.temp)}`}
+                  >
+                    {" "}
+                    {data.main?.temp}°C
+                  </span>
                 </p>
-                <p class="text-xs md:text-sm">
-                  Clima: {data.weather?.[0]?.description || "No disponible"}
+                <p class="text-xs md:text-sm ">
+                  Clima:{" "}
+                  <span class=" font-semibold">
+                    {data.weather?.[0]?.description || "No disponible"}
+                  </span>
                 </p>
               </>
             ) : (
