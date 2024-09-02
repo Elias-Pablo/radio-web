@@ -35,6 +35,14 @@
           Contacto
         </a>
       </li>
+      <li>
+        <a
+          href="/contacto"
+          class="px-4 py-2 block bg-red-700 hover:bg-red-900 rounded-md"
+        >
+          Tarifas Servel
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -65,6 +73,7 @@
     <!-- Botón de menú hamburguesa visible solo en móviles -->
     <button id="menuButton" class="lg:hidden text-white focus:outline-none">
       <svg
+        id="hamburgerIcon"
         class="h-8 w-8"
         fill="none"
         viewBox="0 0 24 24"
@@ -76,16 +85,32 @@
           stroke-linejoin="round"
           d="M4 6h16M4 12h16M4 18h16"></path>
       </svg>
+      <svg
+        id="closeIcon"
+        class="h-8 w-8 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
     </button>
   </div>
 
   <!-- Menú desplegable en móviles -->
-  <nav id="mobileMenu" class="hidden flex-col items-center w-auto text-white">
+  <nav
+    id="mobileMenu"
+    class="hidden flex-col items-center w-1/2 absolute text-white top-24 right-0 bg-black rounded-lg shadow-4xl p-2 z-10"
+  >
     <ul class="flex flex-col items-center space-y-2">
       <li>
         <a
           href="/programas"
-          class="text-xs px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
+          class="text-sm px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
         >
           Programas
         </a>
@@ -93,7 +118,7 @@
       <li>
         <a
           href="/sobrenosotros"
-          class="text-xs px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
+          class="text-sm px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
         >
           Sobre Nosotros
         </a>
@@ -101,9 +126,18 @@
       <li>
         <a
           href="/contacto"
-          class="text-xs px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
+          class="text-sm px-3 py-2 block hover:bg-gray-800 rounded-md text-center w-auto"
         >
           Contacto
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://tarifas.servel.cl/visualizar/6b339a30799eaf7065012a3b8fd20548205221b4"
+          class="text-sm px-3 text-white py-2 block bg-red-700 hover:bg-red-900 rounded-md text-center w-auto"
+          target="_blank"
+        >
+          Tarifas Servel
         </a>
       </li>
     </ul>
@@ -117,6 +151,9 @@
     const menuButton = document.getElementById("menuButton");
     const mobileMenu = document.getElementById("mobileMenu");
     const divPlayer = document.getElementById("divPlayer");
+
+    const hamburgerIcon = document.getElementById("hamburgerIcon");
+    const closeIcon = document.getElementById("closeIcon");
 
     function playAudio() {
       if (audioPlayer instanceof HTMLAudioElement) {
@@ -142,10 +179,12 @@
 
     menuButton.addEventListener("click", function () {
       mobileMenu.classList.toggle("hidden");
-      audioPlayer.classList.add(" w-10");
+      hamburgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
     });
 
     restoreAudioState();
+
     window.addEventListener("beforeunload", function () {
       if (audioPlayer instanceof HTMLAudioElement) {
         localStorage.setItem(
