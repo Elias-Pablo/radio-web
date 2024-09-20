@@ -25,9 +25,32 @@
 
   <iframe
     src="https://player.kick.com/gentecomunicaciones"
-    width="400"
-    height="350"
+    title="Señal TV - Gente Comunicaciones"
     frameborder="0"
     scrolling="no"
     allowfullscreen="true"></iframe>
 </section>
+<style>
+  /* Estilo por defecto para pantallas grandes */
+  iframe {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    width: 700px;
+    height: 394px;
+  }
+
+  /* Para pantallas medianas (tabletas, pantallas entre 768px y 1024px) */
+  @media (max-width: 1024px) {
+    iframe {
+      width: 500px;
+      height: 281px;
+    }
+  }
+
+  /* Para pantallas pequeñas (smartphones, pantallas menores de 768px) */
+  @media (max-width: 768px) {
+    iframe {
+      width: 400px;
+      height: 220px;
+    }
+  }
+</style>
