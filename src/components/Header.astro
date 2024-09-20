@@ -1,10 +1,16 @@
+---
+import Image from "astro/components/Image.astro";
+---
+
 <header class="flex items-center justify-between p-4 bg-black">
   <!-- Logo -->
   <a href="/" class="flex-shrink-0">
-    <img
+    <Image
       src="/logo-blanco.png"
       alt="Gente Comunicaciones"
-      class="w-16 h-auto"
+      width={64}
+      height={64}
+      loading="eager"
     />
   </a>
 
@@ -190,7 +196,7 @@
       if (audioPlayer instanceof HTMLAudioElement) {
         localStorage.setItem(
           "isPlaying",
-          audioPlayer.paused ? "false" : "true",
+          audioPlayer.paused ? "false" : "true"
         );
       }
     });

@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="Sobre Nosotros - Gente Comunicaciones">
@@ -42,10 +43,13 @@ import Footer from "../components/Footer.astro";
             los años, hemos ido creciendo y adaptándonos a las nuevas
             tecnologías para seguir siendo un medio confiable y cercano.
           </p>
-          <img
+          <Image
             src="/mami.JPG"
             alt="Daria Ruz Peralta"
-            class="md:w-32 w-24 h-auto ml-2 rounded-full p-2"
+            width={100}
+            height={100}
+            class="ml-2 rounded-full p-2"
+            loading="eager"
           />
         </div>
       </div>

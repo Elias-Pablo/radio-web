@@ -1,4 +1,6 @@
 ---
+import Image from "astro/components/Image.astro";
+
 const programas = [
   {
     title: "Buen Día mi Gente",
@@ -14,7 +16,7 @@ const programas = [
     time: "Viernes de 18:00 a 19:00 hrs.",
     description:
       "El programa de las mujeres que se toma Gente Comunicaciones para informar, entretener y acompañar a las mujeres de la región.",
-    image: "gentefemenina.png",
+    image: "/gentefemenina.png",
   },
 
   {
@@ -23,7 +25,7 @@ const programas = [
     time: "Viernes de 17:00 a 18:00 hrs.",
     description:
       "Gente Urbana, un programa de música urbana para dar a conocer artistas destacados de Rengo y la región.",
-    image: "gente-urbana.png",
+    image: "/gente-urbana.png",
   },
   {
     title: "Manita Deportes",
@@ -71,7 +73,7 @@ const programas = [
     time: "Lunes a Viernes de 10:00 a 13:00 hrs. y de 16:00 a 18:00 hrs. (Viernes solo de 10:00 a 13:00 hrs.)",
     description:
       "Programación de la Ilustre Municipalidad de Requínoa, con la mejor música, noticias y entretención.",
-    image: "muni-requinoa.jpeg",
+    image: "/muni-requinoa.jpeg",
   },
   {
     title: "Aló Denisse",
@@ -112,10 +114,13 @@ const programas = [
         class="bg-gray-800 p-4 rounded-lg flex flex-col justify-center items-center
       "
       >
-        <img
+        <Image
           src={programa.image}
           alt={programa.title}
-          class="w-60  h-auto   rounded-lg"
+          width={250}
+          height={100}
+          class="rounded-lg"
+          loading="eager"
         />
         <div class="w-3/4 flex flex-col items-start">
           <h2 class="text-xl font-bold text-white mt-4">{programa.title}</h2>
