@@ -11,7 +11,7 @@ import WeatherWidget from "../components/WeatherWidget.astro";
 <main>
   <CurrentProgram />
   <PlayerVideo />
-  <WeatherWidget />
-  <News />
+  <WeatherWidget server:defer />
+  <News server:defer />
 </main>
 <Footer />
