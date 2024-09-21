@@ -5,65 +5,105 @@ import Image from "astro/components/Image.astro";
 ---
 
 <Layout title="Sobre Nosotros - Gente Comunicaciones">
-  <div class="bg-neutral-600 rounded-lg shadow-md p-6 mx-auto">
-    <div class="flex flex-col items-center">
+  <div class="rounded-lg shadow-lg p-8 mx-auto">
+    <div class="flex flex-col items-center space-y-8">
       <div
-        class="flex flex-col items-center bg-amber-200 w-1/2 rounded-xl shadow-xl p-4"
+        class="flex flex-col items-center bg-yellow-400 w-full lg:w-3/4 rounded-xl shadow-xl p-6"
       >
-        <h3 class="text-xl font-semibold mb-4 text-center">Sobre Nosotros</h3>
-        <p class="text-center">
-          Somos Gente Comunicaciones, una empresa apasionada y dedicada a
-          informar a la comunidad. Llevamos 2 décadas de experiencia y la
-          comunidad nos reconoce como un medio creíble y cercano.
+        <h3 class="text-2xl font-bold mb-4 text-center text-gray-800">
+          Presentación
+        </h3>
+        <p
+          class="font-light lg:text-lg text-base leading-relaxed text-gray-800"
+        >
+          Bienvenidos a <strong>Gente Comunicaciones</strong>, una emisora
+          comprometida con entregar lo mejor de la música, la información y el
+          entretenimiento a toda la región de <strong>O'Higgins</strong>. Desde
+          nuestra señal en
+          <strong>94.5 FM</strong> y nuestras plataformas digitales, hemos creado
+          una conexión cercana y única con la comunidad de Rengo y sus alrededores,
+          siempre manteniéndonos a la vanguardia de las nuevas tecnologías.
+          <br /><br />
+          A través de los años, hemos consolidado nuestra posición como una de las
+          emisoras más influyentes y queridas por los oyentes, con una programación
+          variada que incluye desde <strong>música popular</strong> hasta <strong
+            >noticias locales</strong
+          >, deportes y programas de interés general. Con una audiencia cada vez
+          más amplia y un compromiso firme con nuestros valores, en <strong
+            >Gente Comunicaciones</strong
+          > estamos aquí para acompañarte en cada momento del día.
         </p>
       </div>
+
       <div
-        class="flex flex-col items-center bg-lime-300 mt-4 w-auto rounded-xl shadow-xl p-4"
+        class="flex flex-col items-center bg-blue-500 text-white w-auto rounded-xl shadow-lg p-6"
       >
-        <h3 class="text-xl font-semibold mb-2 *:text-center">Nuestro Himno</h3>
+        <h3 class="text-xl font-bold mb-4 text-center">Nuestro Himno</h3>
         <p class="text-center mb-4">Brevemente Gente - Florcita Motuda</p>
-        <audio controls class="w-80" src="/himnogente.mp3"> </audio>
+        <audio controls class="w-80" src="/himnogente.mp3"></audio>
       </div>
+
+      <!-- Historia Section - Fondo Verde -->
       <div
-        class="md:w-1/2 w-full bg-cyan-200 flex p-6 flex-col justify-center items-center rounded-xl mt-4 shadow-xl"
+        class="lg:w-1/2 w-full bg-green-500 text-white flex flex-col items-center p-8 rounded-xl shadow-xl"
       >
-        <h3 class="text-xl font-semibold *:text-center mb-4">
-          Nuestra Historia
-        </h3>
-        <div class="flex items-center justify-center">
+        <h3 class="text-2xl font-bold mb-4 text-center">Nuestra Historia</h3>
+        <p class="text-sm lg:text-lg leading-relaxed font-light">
+          <strong>Gente Comunicaciones</strong> nace en el año 2005 bajo el liderazgo
+          visionario de
+          <strong>Daría Ruz Peralta (Q.E.P.D. 1939-2024)</strong>, quien con
+          pasión y dedicación fundó esta emisora con el sueño de llevar un medio
+          de comunicación cercano, inclusivo y moderno a la comunidad de Rengo.
+          Desde el primer día, nuestra señal en <strong>94.5 FM</strong> se ha caracterizado
+          por ofrecer un espacio donde la voz de la gente encuentra su lugar.
+          <br /><br />
+          En 2007, fuimos pioneros en integrar la transmisión en línea, expandiendo
+          nuestra presencia más allá de las fronteras locales y permitiendo a los
+          oyentes conectarse con nuestra programación desde cualquier lugar del mundo.
+          Aunque somos una emisora local, nuestro impacto se extiende a gran parte
+          de la región de <strong>O'Higgins</strong>, donde cada vez más
+          personas sintonizan nuestra señal. Este crecimiento refleja nuestra
+          capacidad de evolucionar sin perder nuestras raíces, siempre con el
+          espíritu comunitario que nos ha caracterizado.
+        </p>
+        <div class="flex w-auto mt-4 space-x-4 items-center">
+          <Image
+            src="/mami.JPG"
+            alt="Daría Ruz Peralta"
+            width={120}
+            height={100}
+            class="rounded-full border-2 border-white"
+            loading="eager"
+          />
           <img
             src="/logo-antiguo.jpeg"
             alt="Logo Radio Gente Antiguo"
-            class="md:w-28 w-20 mr-2 h-auto rounded-full"
-          />
-          <p class="md:text-base text-xs text-center w-full">
-            Fundada en 2005 por Daría Ruz Peralta (Q.E.P.D. 1939-2024), Gente
-            Comunicaciones ha sido un referente en la comunidad. Nuestro
-            compromiso es informar con veracidad y objetividad. A lo largo de
-            los años, hemos ido creciendo y adaptándonos a las nuevas
-            tecnologías para seguir siendo un medio confiable y cercano.
-          </p>
-          <Image
-            src="/mami.JPG"
-            alt="Daria Ruz Peralta"
-            width={100}
-            height={100}
-            class="ml-2 rounded-full p-2"
-            loading="eager"
+            class="w-36 h-36 rounded-full border-2 border-white"
           />
         </div>
       </div>
+
       <div
-        class="flex flex-col items-center bg-purple-300 w-1/2 mt-4 rounded-xl shadow-xl p-4"
+        class="flex flex-col items-center bg-pink-500 text-white w-full lg:w-3/4 mt-4 rounded-xl shadow-xl p-6"
       >
-        <h3 class="text-xl font-semibold mb-4 text-center">
+        <h3 class="text-2xl font-bold mb-6 text-center">
           Nuestra Visión y Misión
         </h3>
-        <p class="text-center">
-          Nuestra visión es ser un medio de comunicación líder en la región,
-          reconocido por su calidad y compromiso con la comunidad. Nuestra
-          misión es informar con veracidad y objetividad, promoviendo la
-          participación ciudadana y el desarrollo de la comunidad.
+        <p class="font-light leading-relaxed">
+          <strong class="font-semibold">Misión:</strong> En <strong
+            >Gente Comunicaciones</strong
+          >, nuestra misión es ofrecer un medio de comunicación accesible,
+          diverso y cercano, que represente las voces e intereses de la
+          comunidad de toda la región de <strong>O'Higgins</strong>. Buscamos
+          entretener, informar y conectar a las personas a través de contenido
+          relevante, comprometidos con ser un espacio inclusivo para todos.
+          <br /><br />
+          <strong class="font-semibold">Visión:</strong> Aspiramos a ser el medio
+          de comunicación líder en la región, manteniendo nuestras raíces locales
+          mientras expandimos nuestra sintonía y presencia digital. Queremos seguir
+          innovando, aprovechando las nuevas tecnologías para fortalecer la relación
+          con nuestra audiencia y ser un referente en la radiodifusión chilena, siempre
+          fieles a nuestros valores de cercanía, compromiso y calidad.
         </p>
       </div>
     </div>
