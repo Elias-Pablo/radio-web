@@ -3,18 +3,20 @@ import Image from "astro/components/Image.astro";
 
 const comunas = [
   { name: "Rengo", id: 3873441 },
+  { name: "Requínoa", id: 3873414 },
   { name: "Rancagua", id: 3873775 },
   { name: "Pichilemu", id: 3875070 },
-  { name: "Requínoa", id: 3873414 },
+  { name: "Malloa", id: 3880827 },
   { name: "Coinco", id: 3873441 },
   { name: "Coltauco", id: 3893999 },
   { name: "Doñihue", id: 3892272 },
+  { name: "Graneros", id: 3888749 },
 ];
 
 async function fetchWeatherData(comunaId) {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?id=${comunaId}&appid=${import.meta.env.OPENWEATHER_API_KEY}&units=metric&lang=es`
+      `https://api.openweathermap.org/data/2.5/weather?id=${comunaId}&appid=${import.meta.env.OPENWEATHER_API_KEY}&units=metric&lang=es`,
     );
 
     if (!response.ok) {
@@ -30,7 +32,7 @@ async function fetchWeatherData(comunaId) {
 }
 
 const weatherData = await Promise.all(
-  comunas.map((comuna) => fetchWeatherData(comuna.id))
+  comunas.map((comuna) => fetchWeatherData(comuna.id)),
 );
 function getTemp(temp) {
   if (temp <= 15) {
