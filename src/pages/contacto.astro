@@ -1,15 +1,14 @@
 ---
-import { imageConfig } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import Image from "astro/components/Image.astro";
 
 const socialLinks = [
   {
     name: "Facebook",
     url: "https://www.facebook.com/gentecomunicaciones",
-    icon: "/brand-facebook.svg", // Asegúrate de que esta ruta sea correcta y que el archivo SVG exista
+    icon: "/brand-facebook.svg",
   },
-
   {
     name: "Instagram",
     url: "https://www.instagram.com/gentecomunicaciones",
@@ -23,62 +22,96 @@ const socialLinks = [
 ];
 ---
 
-<Layout title="Contacto - Gente Comuniocaciones" />
-<div class="bg-white rounded-lg shadow-md p-6 mx-auto">
-  <div class="">
-    <h3 class="text-xl font-semibold mb-4 text-center">Contáctanos</h3>
-    <p class="text-center">
-      Teléfonos: <a href="tel:+56988694401" class="text-blue-500"
-        >+56 9 8869 4401</a
-      > / <a href="tel:+56975122121" class="text-blue-500">+56 9 7512 2121</a> /
-      <a href="tel:+56955217762" class="text-blue-500">+56 9 5521 7762</a>
-    </p>
-    <p class="text-center">
-      Correo Electrónico: <a
-        href="mailto:contacto@gentecomunicaciones.cl"
-        class="text-blue-500">contacto@gentecomunicaciones.cl</a
-      >
-    </p>
-  </div>
+<Layout title="Contacto - Gente Comunicaciones">
+  <div
+    class="rounded-lg shadow-lg p-8 mx-auto space-y-8 flex justify-center items-center flex-col"
+  >
+    <div
+      class="bg-fuchsia-500 text-white rounded-xl shadow-xl lg:w-auto p-6 flex flex-col items-center"
+    >
+      <h3 class="text-2xl font-bold mb-6 text-center">
+        Síguenos en nuestras Redes Sociales
+      </h3>
+      <div class="flex justify-center space-x-8">
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              class="hover:scale-110 transition-transform duration-200 drop-shadow-xl"
+            >
+              <img src={link.icon} alt={link.name} class="w-10 h-10" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
 
-  <div class="mt-8">
-    <h3 class="text-xl font-semibold mb-4 text-center">Nuestra Ubicación</h3>
-    <p class="text-center">José Bisquertt N°426 - Oficina 2, Rengo, Chile</p>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13458.345156188498!2d-70.865077!3d-34.407531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI0JzI3LjAiUyA3MMKwNTEnNTQuMCJX!5e0!3m2!1ses!2s!4v1603312179342!5m2!1ses!2s"
-      width="100%"
-      height="300"
-      frameborder="0"
-      style="border:0;"
-      allowfullscreen=""
-      aria-hidden="false"
-      title="Ubicación de Gente Comunicaciones"
-      tabindex="0"
-      class="mt-2 border border-gray-300 rounded-md"></iframe>
-  </div>
-  <div class="">
-    <h3 class="text-xl font-semibold mt-4 text-center">
-      Síguenos en nuestras redes sociales
-    </h3>
-    <div class="flex justify-center space-x-4">
-      {
-        socialLinks.map((link) => (
+    <div class="bg-red-400 text-white rounded-xl shadow-xl p-6">
+      <h3 class="text-2xl font-bold mb-6 text-center">Contáctanos</h3>
+      <div class="space-y-4">
+        <p class="text-lg">
+          <strong>Lorena Contreras Ruz</strong> - Relaciones Comerciales:
           <a
-            href={link.url}
-            target="_blank"
-            class="text-gray-700 hover:text-blue-600"
+            href="tel:+56988694401"
+            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
+            >+56 9 8869 4401</a
           >
-            <img
-              src={link.icon}
-              alt={link.name}
-              class="hover:scale-125 w-8 h-8"
-            />
-            <span class="sr-only">{link.name}</span>
-          </a>
-        ))
-      }
+          <span class="text-white"> / </span>
+          <a
+            href="mailto:ventas@gentecomunicaciones.cl"
+            class="text-sky-700 hover:text-sky-900 hover:underline"
+            >ventas@gentecomunicaciones.cl</a
+          >
+        </p>
+        <p class="text-lg">
+          <strong>Elías Bahamondes Contreras</strong> - Representante Legal:
+          <a
+            href="tel:+56975122121"
+            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
+            >+56 9 7512 2121</a
+          >
+          <span class="text-white"> / </span>
+          <a
+            href="mailto:admin@gentecomunicaciones.cl"
+            class="text-sky-700 hover:text-sky-900 hover:underline"
+            >admin@gentecomunicaciones.cl</a
+          >
+        </p>
+        <p class="text-lg">
+          <strong>Vania Elizabeth Contreras</strong> - Área Programática:
+          <a
+            href="tel:+56955217762"
+            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
+            >+56 9 5521 7762</a
+          >
+          <span class="text-white"> / </span>
+          <a
+            href="mailto:edicion@gentecomunicaciones.cl"
+            class="text-sky-700 hover:text-sky-900 hover:underline"
+            >edicion@gentecomunicaciones.cl</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-green-500 text-white rounded-xl shadow-xl p-6 w-3/4">
+      <h3 class="text-2xl font-bold mb-4 text-center">Nuestra Ubicación</h3>
+      <p class="text-center mb-4">
+        José Bisquertt N°426 - Oficina 2, Rengo, Chile
+      </p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13458.345156188498!2d-70.865077!3d-34.407531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI0JzI3LjAiUyA3MMKwNTEnNTQuMCJX!5e0!3m2!1ses!2s!4v1603312179342!5m2!1ses!2s"
+        width="100%"
+        height="300"
+        frameborder="0"
+        style="border:0;"
+        allowfullscreen=""
+        aria-hidden="false"
+        tabindex="0"
+        title="Ubicación de Gente Comunicaciones"
+        class="mt-2 border border-gray-300 rounded-md"></iframe>
     </div>
   </div>
-</div>
-
-<Footer />
+  <Footer />
+</Layout>

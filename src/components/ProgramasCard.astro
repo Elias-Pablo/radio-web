@@ -3,14 +3,6 @@ import Image from "astro/components/Image.astro";
 
 const programas = [
   {
-    title: "Buen Día mi Gente",
-    autor: "Ricardo Hidalgo Jara",
-    time: "Lunes a Viernes de 07:00 a 09:00 hrs.",
-    description:
-      "El programa matinal de Gente FM, con la mejor música, noticias y entretención.",
-    image: "/buen-dia-mi-gente-logo.png",
-  },
-  {
     title: "Gente Femenina",
     autor: "Lorena Maribel Contreras Ruz",
     time: "Viernes de 18:00 a 19:00 hrs.",
@@ -94,36 +86,38 @@ const programas = [
 ];
 ---
 
-<h1 class="text-4xl text-center font-bold text-white my-5">
-  Nuestros Programas
-</h1>
-<div
-  class="bg-pink-600 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4"
->
-  {
-    programas.map((programa) => (
-      <div
-        class="bg-gray-800 p-4 rounded-lg flex flex-col justify-center items-center
-      "
-      >
-        <Image
-          src={programa.image}
-          alt={programa.title}
-          width={250}
-          height={100}
-          class="rounded-lg"
-          loading="eager"
-        />
-        <div class="w-3/4 flex flex-col items-start">
-          <h2 class="text-xl font-bold text-white mt-4">{programa.title}</h2>
-          <p class="text-sm text-gray-400">
-            <span class="font-bold">Conduce: </span>
-            {programa.autor}
-          </p>
-          <p class="text-xs text-gray-400 italic">{programa.time}</p>
-          <p class="text-sm text-gray-400  mt-2">{programa.description}</p>
+<div class="bg-gradient-to-br from-pink-500 via-yellow-500 to-blue-500">
+  <h1 class="text-4xl text-center font-bold text-white pt-4">
+    Nuestros Programas
+  </h1>
+
+  <div
+    class="bg-gradient-to-br from-pink-500 via-yellow-500 to-blue-500 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6"
+  >
+    {
+      programas.map((programa) => (
+        <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+          <Image
+            src={programa.image}
+            alt={programa.title}
+            width={250}
+            height={100}
+            class="rounded-lg drop-shadow-md"
+            loading="eager"
+          />
+          <div class="w-full text-center mt-4">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              {programa.title}
+            </h2>
+            <p class="text-sm text-gray-600 mb-1">
+              <span class="font-bold">Conduce: </span>
+              {programa.autor}
+            </p>
+            <p class="text-xs text-gray-500 italic mb-2">{programa.time}</p>
+            <p class="text-sm text-gray-700">{programa.description}</p>
+          </div>
         </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>
