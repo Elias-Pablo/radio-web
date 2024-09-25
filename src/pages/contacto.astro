@@ -47,55 +47,62 @@ const socialLinks = [
       </div>
     </div>
 
-    <div class="bg-red-400 text-white rounded-xl shadow-xl p-6">
+    <div
+      class="bg-orange-500 text-white w-full md:w-auto rounded-xl shadow-xl p-6"
+    >
       <h3 class="text-2xl font-bold mb-6 text-center">Contáctanos</h3>
-      <div class="space-y-4">
-        <p class="text-lg">
-          <strong>Lorena Contreras Ruz</strong> - Relaciones Comerciales:
-          <a
-            href="tel:+56988694401"
-            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
-            >+56 9 8869 4401</a
-          >
-          <span class="text-white"> / </span>
-          <a
-            href="mailto:ventas@gentecomunicaciones.cl"
-            class="text-sky-700 hover:text-sky-900 hover:underline"
-            >ventas@gentecomunicaciones.cl</a
-          >
-        </p>
-        <p class="text-lg">
-          <strong>Elías Bahamondes Contreras</strong> - Representante Legal:
-          <a
-            href="tel:+56975122121"
-            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
-            >+56 9 7512 2121</a
-          >
-          <span class="text-white"> / </span>
-          <a
-            href="mailto:admin@gentecomunicaciones.cl"
-            class="text-sky-700 hover:text-sky-900 hover:underline"
-            >admin@gentecomunicaciones.cl</a
-          >
-        </p>
-        <p class="text-lg">
-          <strong>Vania Elizabeth Contreras</strong> - Área Programática:
-          <a
-            href="tel:+56955217762"
-            class="text-sky-700 hover:text-sky-900 hover:underline ml-2"
-            >+56 9 5521 7762</a
-          >
-          <span class="text-white"> / </span>
-          <a
-            href="mailto:edicion@gentecomunicaciones.cl"
-            class="text-sky-700 hover:text-sky-900 hover:underline"
-            >edicion@gentecomunicaciones.cl</a
-          >
-        </p>
+      <div class="space-y-6">
+        {
+          [
+            {
+              name: "Lorena Contreras Ruz",
+              role: "Relaciones Comerciales",
+              phone: "+56988694401",
+              mail: "ventas@gentecomunicaciones.cl",
+            },
+            {
+              name: "Elías Bahamondes Contreras",
+              role: "Representante Legal",
+              phone: "+56975122121",
+              mail: "admin@gentecomunicaciones.cl",
+            },
+            {
+              name: "Vania Elizabeth Contreras",
+              role: "Área Programática",
+              phone: "+56955217762",
+              mail: "edicion@gentecomunicaciones.cl",
+            },
+          ].map((contact, index) => (
+            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
+              <p class="text-md  text-center w-full font-semibold">
+                {contact.name}
+              </p>
+              <p class="text-center italic">{contact.role}</p>
+              <div class="flex flex-col md:flex-row justify-center w-auto md:w-2/3 gap-5">
+                <a
+                  href={`tel:${contact.phone}`}
+                  class="text-sky-300 hover:text-sky-500 hover:underline text-center"
+                >
+                  {contact.phone}
+                </a>
+                <span class="text-white hidden ">/</span>
+                <a
+                  href={`mailto:${contact.mail}`}
+                  class="text-sky-300 hover:text-sky-500 hover:underline text-center"
+                >
+                  {contact.mail}
+                </a>
+                <hr class="w-full border border-white my-4 md:hidden" />
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
 
-    <div class="bg-green-500 text-white rounded-xl shadow-xl p-6 w-3/4">
+    <div
+      class="bg-green-500 text-white rounded-xl shadow-xl p-6 md:w-1/2 w-full"
+    >
       <h3 class="text-2xl font-bold mb-4 text-center">Nuestra Ubicación</h3>
       <p class="text-center mb-4">
         José Bisquertt N°426 - Oficina 2, Rengo, Chile
