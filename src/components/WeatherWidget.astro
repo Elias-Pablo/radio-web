@@ -45,7 +45,7 @@ function getTemp(temp) {
 }
 ---
 
-<div class="bg-blue-300 shadow-md p-6">
+<div class="bg-blue-400 shadow-md p-6">
   <div class="flex items-center justify-center mb-4">
     <h1 class="text-3xl text-white font-semibold text-center">Clima</h1><svg
       xmlns="http://www.w3.org/2000/svg"
@@ -72,8 +72,8 @@ function getTemp(temp) {
     weatherData.length > 0 ? (
       <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-9 gap-3">
         {weatherData.map((data, index) => (
-          <div class="bg-sky-200 p-2 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-md font-bold mb-2">{comunas[index].name}</h3>
+          <div class="bg-sky-300 p-2 rounded-lg flex flex-col items-center justify-center">
+            <h3 class="text-md  font-bold mb-2">{comunas[index].name}</h3>
             {data ? (
               <>
                 <Image
