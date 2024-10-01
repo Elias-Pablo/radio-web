@@ -162,41 +162,62 @@ import Image from "astro/components/Image.astro";
     const hamburgerIcon = document.getElementById("hamburgerIcon");
     const closeIcon = document.getElementById("closeIcon");
 
-    function playAudio() {
+    // URL del flujo de audio en vivo
+    const liveStreamURL = "https://servers58.com/proxy/sc_gentefmcl?mp=/;"; // Asegúrate de que sea la URL del stream en vivo
+
+    function playLiveAudio() {
       if (audioPlayer instanceof HTMLAudioElement) {
+        // Reinicia la URL del flujo para garantizar que se reproduce desde el en vivo
+        audioPlayer.src = liveStreamURL;
+
+        // Mostrar el reproductor y reproducir desde el en vivo
         audioPlayer.classList.remove("hidden");
         divPlayer.classList.remove("hidden");
         divPlayer.classList.remove("lg:hidden");
-        audioPlayer.play();
+
+        audioPlayer
+          .play()
+          .then(() => {
+            console.log("Audio en vivo iniciado");
+          })
+          .catch((error) => {
+            console.error("Error al iniciar la reproducción en vivo:", error);
+          });
+
         localStorage.setItem("isPlaying", "true");
       }
     }
 
+    // Restaura el estado del audio si estaba en reproducción antes de recargar la página
     function restoreAudioState() {
       const isPlaying = localStorage.getItem("isPlaying");
       if (isPlaying === "true") {
-        playAudio();
+        playLiveAudio();
       }
     }
 
+    // Evento del botón EN VIVO
     liveButton.addEventListener("click", function (event) {
       event.preventDefault();
-      playAudio();
+      playLiveAudio(); // Reproducir desde el en vivo
     });
 
+    // Evento para alternar el menú en móviles
     menuButton.addEventListener("click", function () {
       mobileMenu.classList.toggle("hidden");
       hamburgerIcon.classList.toggle("hidden");
       closeIcon.classList.toggle("hidden");
     });
 
+    // Restaura el estado del audio al cargar la página
     restoreAudioState();
 
+    // Al cerrar la página, guarda si el audio está en reproducción o no
     window.addEventListener("beforeunload", function () {
       if (audioPlayer instanceof HTMLAudioElement) {
         localStorage.setItem(
           "isPlaying",
-          audioPlayer.paused ? "false" : "true"
+          audioPlayer.paused ? "false" : "true",
         );
       }
     });
