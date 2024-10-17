@@ -70,9 +70,9 @@ import Image from "astro/components/Image.astro";
     <div class="hidden lg:hidden items-center" id="divPlayer">
       <audio
         id="radioPlayer"
-        preload="metadata"
+        preload="none"
         src="https://servers58.com/proxy/sc_gentefmcl?mp=/;"
-        title="Sound HD"
+        title="Audio de Gente Comunicaciones en Vivo"
         class="lg:w-60 w-36"
         controls></audio>
     </div>
@@ -162,41 +162,65 @@ import Image from "astro/components/Image.astro";
     const hamburgerIcon = document.getElementById("hamburgerIcon");
     const closeIcon = document.getElementById("closeIcon");
 
+    // Detectar si el navegador es Safari
+    function isSafari() {
+      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    }
+
+    // Función para iniciar el audio
     function playAudio() {
       if (audioPlayer instanceof HTMLAudioElement) {
+        // Eliminar clases 'hidden' para mostrar el reproductor
         audioPlayer.classList.remove("hidden");
         divPlayer.classList.remove("hidden");
         divPlayer.classList.remove("lg:hidden");
-        audioPlayer.play();
-        localStorage.setItem("isPlaying", "true");
+
+        // Intentar reproducir el audio, y manejar errores
+        audioPlayer
+          .play()
+          .then(() => {
+            console.log("Reproducción iniciada con éxito");
+            localStorage.setItem("isPlaying", "true");
+          })
+          .catch((error) => {
+            console.error("Error al reproducir el audio:", error);
+            alert(
+              "No se pudo reproducir el audio. Por favor, verifica los permisos del navegador."
+            );
+          });
       }
     }
 
+    // Restaurar el estado del audio si estaba reproduciéndose antes
     function restoreAudioState() {
       const isPlaying = localStorage.getItem("isPlaying");
       if (isPlaying === "true") {
-        playAudio();
+        playAudio(); // Restablecer la reproducción si el audio estaba en play
       }
     }
 
+    // Escuchar el clic en el botón "EN VIVO"
     liveButton.addEventListener("click", function (event) {
       event.preventDefault();
-      playAudio();
+      playAudio(); // Iniciar la reproducción del audio solo en interacción del usuario
     });
 
+    // Control del menú móvil (hamburguesa)
     menuButton.addEventListener("click", function () {
       mobileMenu.classList.toggle("hidden");
       hamburgerIcon.classList.toggle("hidden");
       closeIcon.classList.toggle("hidden");
     });
 
+    // Restaurar estado de reproducción al cargar la página
     restoreAudioState();
 
+    // Guardar el estado del audio antes de cerrar o recargar la página
     window.addEventListener("beforeunload", function () {
       if (audioPlayer instanceof HTMLAudioElement) {
         localStorage.setItem(
           "isPlaying",
-          audioPlayer.paused ? "false" : "true",
+          audioPlayer.paused ? "false" : "true"
         );
       }
     });
