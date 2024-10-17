@@ -162,25 +162,19 @@ import Image from "astro/components/Image.astro";
     const hamburgerIcon = document.getElementById("hamburgerIcon");
     const closeIcon = document.getElementById("closeIcon");
 
-    // Detectar si el navegador es Safari
-    function isSafari() {
-      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    }
-
-    // Función para iniciar el audio
+    // Función para iniciar el audio al hacer clic en el botón
     function playAudio() {
       if (audioPlayer instanceof HTMLAudioElement) {
-        // Eliminar clases 'hidden' para mostrar el reproductor
+        // Mostrar el reproductor de audio
         audioPlayer.classList.remove("hidden");
         divPlayer.classList.remove("hidden");
         divPlayer.classList.remove("lg:hidden");
 
-        // Intentar reproducir el audio, y manejar errores
+        // Intentar reproducir el audio y manejar posibles errores
         audioPlayer
           .play()
           .then(() => {
             console.log("Reproducción iniciada con éxito");
-            localStorage.setItem("isPlaying", "true");
           })
           .catch((error) => {
             console.error("Error al reproducir el audio:", error);
@@ -191,18 +185,10 @@ import Image from "astro/components/Image.astro";
       }
     }
 
-    // Restaurar el estado del audio si estaba reproduciéndose antes
-    function restoreAudioState() {
-      const isPlaying = localStorage.getItem("isPlaying");
-      if (isPlaying === "true") {
-        playAudio(); // Restablecer la reproducción si el audio estaba en play
-      }
-    }
-
-    // Escuchar el clic en el botón "EN VIVO"
+    // Escuchar el clic en el botón "EN VIVO" para iniciar la reproducción del audio
     liveButton.addEventListener("click", function (event) {
-      event.preventDefault();
-      playAudio(); // Iniciar la reproducción del audio solo en interacción del usuario
+      event.preventDefault(); // Prevenir la navegación predeterminada
+      playAudio(); // Iniciar la reproducción del audio solo cuando el usuario hace clic
     });
 
     // Control del menú móvil (hamburguesa)
@@ -210,19 +196,6 @@ import Image from "astro/components/Image.astro";
       mobileMenu.classList.toggle("hidden");
       hamburgerIcon.classList.toggle("hidden");
       closeIcon.classList.toggle("hidden");
-    });
-
-    // Restaurar estado de reproducción al cargar la página
-    restoreAudioState();
-
-    // Guardar el estado del audio antes de cerrar o recargar la página
-    window.addEventListener("beforeunload", function () {
-      if (audioPlayer instanceof HTMLAudioElement) {
-        localStorage.setItem(
-          "isPlaying",
-          audioPlayer.paused ? "false" : "true"
-        );
-      }
     });
   });
 </script>
