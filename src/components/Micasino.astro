@@ -1,0 +1,44 @@
+---
+import Image from "astro/components/Image.astro";
+---
+
+<div
+    class="bg-gradient-to-l from-black to-neutral-600 p-6 shadow-lg text-white flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+>
+    <div class="text-center md:text-left">
+        <h2 class="text-xl md:text-3xl font-bold mb-2">
+            ¡Gana dinero rápido y fácil en <span class="text-yellow-400"
+                >MiCasino.com</span
+            >!
+        </h2>
+        <p class="mb-4 text-sm md:text-base">
+            Duplica tu primer depósito con el código <span
+                class="font-bold text-yellow-400">GENTE945</span
+            >. Juega en el mejor <span class="text-yellow-400"
+                >casino en vivo</span
+            >, <span class="text-yellow-400">apuestas deportivas</span> y <span
+                class="text-yellow-400">slots</span
+            >. <br />
+            <span class="font-bold">Bono de bienvenida</span> de hasta <span
+                class="font-bold text-yellow-400">$375.000</span
+            > en tu primer depósito.
+        </p>
+        <a
+            href="https://micasino.com/"
+            class="bg-yellow-400 text-slate-800 px-4 py-2 md:px-6 md:py-3 rounded-full font-bold uppercase shadow-lg transition transform hover:scale-105 inline-block"
+            >¡Regístrate y Gana!</a
+        >
+    </div>
+    <div class="md:block">
+        <a href="https://micasino.com/">
+            <Image
+                src="/micasino.png"
+                alt="MiCasino.com"
+                class="rounded-lg shadow-lg"
+                width={300}
+                height={300}
+                loading="eager"
+            />
+        </a>
+    </div>
+</div>
