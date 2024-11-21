@@ -12,7 +12,7 @@ const fetchNews = async () => {
 const articles = await fetchNews();
 ---
 
-<section class="w-screen mx-0 p-4 bg-red-400">
+<section class="w-auto mx-0 p-4 bg-red-400">
   <div class="flex items-center justify-center">
     <h1 class="text-3xl mt-2 font-bold mb-4 text-white">Noticias</h1><svg
       width="32"
@@ -41,20 +41,20 @@ const articles = await fetchNews();
               <Image
                 src={article.urlToImage}
                 alt={article.title}
-                width={170}
+                width={150}
                 height={80}
                 class="rounded-lg"
               />
             )}
             <div class="ml-4 w-2/3">
               <h2 class="text-md font-semibold mb-1">{article.title}</h2>
-              <p class="text-xs mb-2">{article.description}</p>
+              <p class="text-xs mb-2 text-wrap">{article.description}</p>
               <a
                 href={article.url}
                 target="_blank"
                 class="text-blue-500 hover:underline text-sm"
               >
-                Leer más
+                Leer más...
               </a>
             </div>
           </div>
