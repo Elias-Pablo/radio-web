@@ -57,12 +57,13 @@ import Image from "astro/components/Image.astro";
     </a>
 
     <!-- Reproductor de audio -->
-    <div class="hidden lg:hidden items-center" id="divPlayer">
+    <div class="hidden lg:hidden items-center w-48 h-auto" id="divPlayer">
       <audio
         id="radioPlayer"
         src="https://servers58.com/proxy/sc_gentefmcl?mp=/;"
         title="Audio de Gente Comunicaciones en Vivo"
-        class="lg:w-60 w-36"></audio>
+        class="w-full"
+        controls></audio>
     </div>
 
     <!-- Botón de menú hamburguesa visible solo en móviles -->
@@ -99,7 +100,7 @@ import Image from "astro/components/Image.astro";
   <!-- Menú desplegable en móviles -->
   <nav
     id="mobileMenu"
-    class="hidden flex-col items-center w-1/2 absolute text-white top-24 bg-opacity-95 right-0 bg-black rounded-lg shadow-4xl p-2 z-10"
+    class="hidden flex-col items-center w-1/2 absolute text-white top-28 bg-opacity-95 right-0 bg-black rounded-lg shadow-4xl p-2 z-40"
   >
     <ul class="flex flex-col items-center space-y-2">
       <li>
