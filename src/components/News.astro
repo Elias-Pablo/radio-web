@@ -1,7 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
 
-const NEWS_API_URL = `https://newsapi.org/v2/everything?q=Chile&sortBy=publishedAt&pageSize=20&language=es&apiKey=${import.meta.env.NEWS_API_KEY}`;
+const NEWS_API_URL = `https://newsapi.org/v2/everything?q="Chile"&sortBy=publishedAt&pageSize=20&language=es&apiKey=${import.meta.env.NEWS_API_KEY}`;
 
 const fetchNews = async () => {
   const response = await fetch(NEWS_API_URL);
