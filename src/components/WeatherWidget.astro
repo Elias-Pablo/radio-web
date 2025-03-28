@@ -74,26 +74,26 @@ function getTemp(temp) {
       <div class="grid grid-cols-2 md:grid-cols-5  gap-3">
         {weatherData.map((data, index) => (
           <div class="bg-sky-300 p-2 rounded-lg flex flex-col items-center justify-center">
-            <h3 class="text-md  font-bold mb-2">{comunas[index].name}</h3>
+            <h3 class="text-lg  font-bold mb-2">{comunas[index].name}</h3>
             {data ? (
               <>
                 <Image
-                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
                   alt={data.weather[0].description}
-                  width={80}
-                  height={80}
+                  width={120}
+                  height={120}
                   class="mb-2 drop-shadow-lg "
                 />
-                <p class="flex flex-col text-xs md:text-sm items-center justify-center">
+                <p class="flex flex-col text-md md:text-lg items-center justify-center">
                   Temperatura:{" "}
                   <span
-                    class={`ml-1 text-xs font-bold md:text-sm ${getTemp(data.main?.temp)}`}
+                    class={`ml-1 text-md font-bold md:text-lg ${getTemp(data.main?.temp)}`}
                   >
                     {" "}
                     {parseInt(data.main?.temp)}°C
                   </span>
                 </p>
-                <p class="text-xs md:text-sm ">
+                <p class="text-md md:text-lg ">
                   Clima:{" "}
                   <span class=" font-semibold">
                     {data.weather?.[0]?.description || "No disponible"}
