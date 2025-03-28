@@ -90,7 +90,7 @@ function getTemp(temp) {
                     class={`ml-1 text-xs font-bold md:text-sm ${getTemp(data.main?.temp)}`}
                   >
                     {" "}
-                    {data.main?.temp}°C
+                    {parseInt(data.main?.temp)}°C
                   </span>
                 </p>
                 <p class="text-xs md:text-sm ">
