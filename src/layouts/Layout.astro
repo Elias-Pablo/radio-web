@@ -4,7 +4,6 @@ interface Props {
   title: string;
 }
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 const { title } = Astro.props;
@@ -16,12 +15,28 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta
       name="description"
-      content="Sitio web Oficial de Gente Comunicaciones"
+      content="Sitio web Oficial de Gente Comunicaciones, un medio de comunicación de la Región de O'Higgins, Chile. Conectando a la comunidad de la región con música, noticias y entretenimiento."
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/logo.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta property="og:url" content="https://www.gentecomunicaciones.cl" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gente Comunicaciones" />
+    <meta property="og:locale" content="es_CL" />
+    <meta
+      property="og:title"
+      content="Gente Comunicaciones, donde todas las voces tienen cabida."
+    />
+    <meta
+      property="og:description"
+      content="Gente Comunicaciones un medio de la región de O'Higgins dedicado a informar, entretener y animar a la comunidad con su programación dedicada para todos."
+    />
+    <meta
+      property="og:image"
+      content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYN4HK6o0lA1aE0zyS7K-T31Yzw4tMM3TVsA&s"
+    />
   </head>
   <body>
     <Header />
