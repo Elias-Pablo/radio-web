@@ -43,12 +43,16 @@ const articles = await fetchNews();
                 alt={article.title}
                 width={150}
                 height={80}
-                class="rounded-lg"
+                class="rounded-lg lg:w-2/5 h-auto object-cover"
               />
             )}
             <div class="ml-4 w-2/3">
-              <h2 class="text-md font-semibold mb-1">{article.title}</h2>
-              <p class="text-xs mb-2 text-wrap">{article.description}</p>
+              <h2 class="text-md font-semibold mb-1 lg:text-xl">
+                {article.title}
+              </h2>
+              <p class="text-xs mb-2 text-wrap lg:text-md">
+                {article.description}
+              </p>
               <a
                 href={article.url}
                 target="_blank"
