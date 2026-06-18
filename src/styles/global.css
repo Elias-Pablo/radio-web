@@ -58,11 +58,27 @@
   }
 
   body {
-    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    @apply min-h-screen overflow-x-hidden bg-background font-sans text-foreground antialiased;
     background:
       radial-gradient(circle at top left, hsl(var(--primary) / 0.18), transparent 34rem),
       radial-gradient(circle at 90% 10%, hsl(var(--accent) / 0.14), transparent 28rem),
       hsl(var(--background));
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -25%;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 22%, hsl(var(--primary) / 0.22), transparent 22rem),
+      radial-gradient(circle at 78% 18%, hsl(var(--accent) / 0.18), transparent 24rem),
+      radial-gradient(circle at 50% 82%, rgb(14 165 233 / 0.14), transparent 28rem),
+      radial-gradient(circle at 86% 78%, rgb(16 185 129 / 0.1), transparent 22rem);
+    filter: blur(12px) saturate(1.15);
+    opacity: 0.8;
+    transform: translate3d(0, 0, 0);
   }
 
   code {
@@ -98,6 +114,59 @@
   .eyebrow {
     @apply text-xs font-bold uppercase tracking-[0.28em] text-primary;
   }
+
+  .live-button[data-state="playing"] {
+    box-shadow:
+      0 16px 34px rgb(220 38 38 / 0.32),
+      0 0 0 1px rgb(255 255 255 / 0.12),
+      0 0 32px rgb(251 191 36 / 0.26);
+  }
+
+  .live-button[data-state="playing"]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.2),
+      transparent
+    );
+    opacity: 0.5;
+    pointer-events: none;
+    transform: translateX(-100%);
+  }
+
+  .live-button[data-state="playing"]::before {
+    animation: live-button-sweep 2.6s ease-in-out infinite;
+  }
+
+  .live-waveform span {
+    width: 3px;
+    height: 0.55rem;
+    border-radius: 9999px;
+    background: rgb(255 255 255 / 0.9);
+    box-shadow: 0 0 12px rgb(255 255 255 / 0.55);
+    transform-origin: center;
+    animation: live-waveform 1s ease-in-out infinite;
+  }
+
+  .live-waveform span:nth-child(2) {
+    animation-delay: 0.12s;
+  }
+
+  .live-waveform span:nth-child(3) {
+    animation-delay: 0.24s;
+  }
+
+  .live-waveform span:nth-child(4) {
+    animation-delay: 0.36s;
+  }
+
+  .live-waveform span:nth-child(5) {
+    animation-delay: 0.48s;
+  }
 }
 
 @layer utilities {
@@ -111,6 +180,10 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: ambient-colors 18s ease-in-out infinite alternate;
+  }
+
   ::view-transition-old(root) {
     animation: page-fade-out 180ms ease both;
   }
@@ -121,6 +194,50 @@
 
   .section-shell {
     animation: content-rise 420ms ease both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .live-button[data-state="playing"]::before,
+  .live-button[data-state="playing"]::after,
+  .live-button[data-state="playing"] #liveStatusDot::before,
+  .live-button[data-state="playing"] #liveStatusDot::after,
+  .live-waveform span {
+    animation: none;
+  }
+}
+
+@keyframes ambient-colors {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+    filter: blur(12px) saturate(1.1) hue-rotate(0deg);
+  }
+  50% {
+    transform: translate3d(2%, 1.5%, 0) scale(1.04);
+    filter: blur(16px) saturate(1.25) hue-rotate(14deg);
+  }
+  100% {
+    transform: translate3d(-1%, 2%, 0) scale(1.02);
+    filter: blur(14px) saturate(1.2) hue-rotate(-10deg);
+  }
+}
+
+@keyframes live-button-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes live-waveform {
+  0%,
+  100% {
+    transform: scaleY(0.45);
+  }
+  50% {
+    transform: scaleY(1.75);
   }
 }
 

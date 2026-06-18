@@ -55,7 +55,7 @@ const navItems = [
           type="button"
           data-state="idle"
           data-stream-url="/api/radio"
-          class="group relative inline-flex h-11 min-w-32 items-center justify-center gap-2 overflow-hidden rounded-full border border-red-300/40 bg-gradient-to-r from-red-600 via-red-500 to-amber-500 px-3 text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:shadow-red-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[state=connecting]:from-amber-500 data-[state=connecting]:to-red-500 data-[state=playing]:border-emerald-300/50 data-[state=playing]:from-emerald-500 data-[state=playing]:via-red-500 data-[state=playing]:to-amber-400 sm:h-12 sm:min-w-52 sm:justify-start sm:px-4"
+          class="live-button group relative inline-flex h-11 min-w-32 items-center justify-center gap-2 overflow-hidden rounded-full border border-red-300/40 bg-gradient-to-r from-red-600 via-red-500 to-amber-500 px-3 text-white shadow-lg shadow-red-950/40 transition hover:-translate-y-0.5 hover:shadow-red-900/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300 focus-visible:ring-offset-2 focus-visible:ring-offset-background data-[state=connecting]:from-amber-500 data-[state=connecting]:to-red-500 data-[state=playing]:border-emerald-300/50 data-[state=playing]:from-emerald-500 data-[state=playing]:via-red-500 data-[state=playing]:to-amber-400 sm:h-12 sm:min-w-52 sm:justify-start sm:px-4"
           aria-label="Escuchar radio en vivo"
           aria-pressed="false"
         >
@@ -65,6 +65,13 @@ const navItems = [
             class="relative h-2.5 w-2.5 rounded-full bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.18)] group-data-[state=connecting]:animate-pulse group-data-[state=playing]:bg-emerald-100"
             aria-hidden="true"
           ></span>
+          <span class="live-waveform relative hidden h-5 items-center gap-0.5 group-data-[state=playing]:flex" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
           <span class="relative flex min-w-0 flex-col leading-none">
             <span
               id="liveButtonText"
