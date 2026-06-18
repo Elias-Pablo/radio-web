@@ -20,22 +20,24 @@ import Card from "./ui/Card.astro";
       </div>
     </div>
 
-    <Card class="relative overflow-hidden border-primary/30 bg-black shadow-2xl shadow-primary/10">
+    <Card class="overflow-hidden border-primary/30 bg-black shadow-2xl shadow-primary/10">
       <iframe
         id="kickPlayer"
         src="https://player.kick.com/gentecomunicaciones?muted=true&autoplay=true"
         data-muted-src="https://player.kick.com/gentecomunicaciones?muted=true&autoplay=true"
-        data-unmuted-src="https://player.kick.com/gentecomunicaciones?muted=false&autoplay=true"
+        data-unmuted-src="https://player.kick.com/gentecomunicaciones?muted=false&autoplay=false"
         title="Señal TV - Gente Comunicaciones"
         loading="eager"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen="true"
         referrerpolicy="strict-origin-when-cross-origin"
         class="aspect-video w-full"></iframe>
+    </Card>
+    <div class="mt-3 rounded-2xl border border-white/10 bg-white/5 p-3 sm:hidden">
       <button
         id="kickSoundButton"
         type="button"
-        class="absolute bottom-3 left-3 right-3 z-10 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-black/75 px-4 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-2xl backdrop-blur transition hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:hidden"
+        class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-lg transition hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
         aria-pressed="false"
       >
         <svg
@@ -70,37 +72,47 @@ import Card from "./ui/Card.astro";
         </svg>
         <span id="kickSoundText">Activar sonido</span>
       </button>
-    </Card>
+      <p id="kickSoundHint" class="mt-2 hidden text-center text-xs font-medium text-muted-foreground">
+        Toca play dentro del video para escuchar con audio.
+      </p>
+    </div>
   </div>
 </section>
 
-<script>
+<script data-astro-rerun>
   const kickPlayer = document.getElementById("kickPlayer");
   const kickSoundButton = document.getElementById("kickSoundButton");
   const kickMutedIcon = document.getElementById("kickMutedIcon");
   const kickSoundIcon = document.getElementById("kickSoundIcon");
   const kickSoundText = document.getElementById("kickSoundText");
+  const kickSoundHint = document.getElementById("kickSoundHint");
 
   if (
     kickPlayer instanceof HTMLIFrameElement &&
     kickSoundButton instanceof HTMLButtonElement &&
     kickMutedIcon &&
     kickSoundIcon &&
-    kickSoundText
+    kickSoundText &&
+    kickSoundHint
   ) {
     kickSoundButton.addEventListener("click", () => {
-      const isMuted = kickSoundButton.getAttribute("aria-pressed") !== "true";
-      const nextSrc = isMuted ? kickPlayer.dataset.unmutedSrc : kickPlayer.dataset.mutedSrc;
+      const shouldEnableSound = kickSoundButton.getAttribute("aria-pressed") !== "true";
+      const nextSrc = shouldEnableSound
+        ? kickPlayer.dataset.unmutedSrc
+        : kickPlayer.dataset.mutedSrc;
 
       if (!nextSrc) {
         return;
       }
 
       kickPlayer.src = nextSrc;
-      kickSoundButton.setAttribute("aria-pressed", String(isMuted));
-      kickMutedIcon.classList.toggle("hidden", isMuted);
-      kickSoundIcon.classList.toggle("hidden", !isMuted);
-      kickSoundText.textContent = isMuted ? "Silenciar" : "Activar sonido";
+      kickSoundButton.setAttribute("aria-pressed", String(shouldEnableSound));
+      kickMutedIcon.classList.toggle("hidden", shouldEnableSound);
+      kickSoundIcon.classList.toggle("hidden", !shouldEnableSound);
+      kickSoundHint.classList.toggle("hidden", !shouldEnableSound);
+      kickSoundText.textContent = shouldEnableSound
+        ? "Listo para audio"
+        : "Activar sonido";
     });
   }
 </script>
