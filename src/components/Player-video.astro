@@ -20,15 +20,87 @@ import Card from "./ui/Card.astro";
       </div>
     </div>
 
-    <Card class="overflow-hidden border-primary/30 bg-black shadow-2xl shadow-primary/10">
+    <Card class="relative overflow-hidden border-primary/30 bg-black shadow-2xl shadow-primary/10">
       <iframe
+        id="kickPlayer"
         src="https://player.kick.com/gentecomunicaciones?muted=true&autoplay=true"
+        data-muted-src="https://player.kick.com/gentecomunicaciones?muted=true&autoplay=true"
+        data-unmuted-src="https://player.kick.com/gentecomunicaciones?muted=false&autoplay=true"
         title="Señal TV - Gente Comunicaciones"
         loading="eager"
         allow="autoplay; fullscreen; picture-in-picture"
         allowfullscreen="true"
         referrerpolicy="strict-origin-when-cross-origin"
         class="aspect-video w-full"></iframe>
+      <button
+        id="kickSoundButton"
+        type="button"
+        class="absolute bottom-3 left-3 right-3 z-10 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-black/75 px-4 py-3 text-sm font-black uppercase tracking-[0.14em] text-white shadow-2xl backdrop-blur transition hover:bg-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:hidden"
+        aria-pressed="false"
+      >
+        <svg
+          id="kickMutedIcon"
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+          <path d="m22 9-6 6"></path>
+          <path d="m16 9 6 6"></path>
+        </svg>
+        <svg
+          id="kickSoundIcon"
+          class="hidden h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M11 5 6 9H3v6h3l5 4V5Z"></path>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+        <span id="kickSoundText">Activar sonido</span>
+      </button>
     </Card>
   </div>
 </section>
+
+<script>
+  const kickPlayer = document.getElementById("kickPlayer");
+  const kickSoundButton = document.getElementById("kickSoundButton");
+  const kickMutedIcon = document.getElementById("kickMutedIcon");
+  const kickSoundIcon = document.getElementById("kickSoundIcon");
+  const kickSoundText = document.getElementById("kickSoundText");
+
+  if (
+    kickPlayer instanceof HTMLIFrameElement &&
+    kickSoundButton instanceof HTMLButtonElement &&
+    kickMutedIcon &&
+    kickSoundIcon &&
+    kickSoundText
+  ) {
+    kickSoundButton.addEventListener("click", () => {
+      const isMuted = kickSoundButton.getAttribute("aria-pressed") !== "true";
+      const nextSrc = isMuted ? kickPlayer.dataset.unmutedSrc : kickPlayer.dataset.mutedSrc;
+
+      if (!nextSrc) {
+        return;
+      }
+
+      kickPlayer.src = nextSrc;
+      kickSoundButton.setAttribute("aria-pressed", String(isMuted));
+      kickMutedIcon.classList.toggle("hidden", isMuted);
+      kickSoundIcon.classList.toggle("hidden", !isMuted);
+      kickSoundText.textContent = isMuted ? "Silenciar" : "Activar sonido";
+    });
+  }
+</script>
