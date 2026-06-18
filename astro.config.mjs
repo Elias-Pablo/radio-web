@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  integrations: [tailwind({ applyBaseStyles: false })],
   output: "server",
   adapter: vercel({
     webAnalytics: {

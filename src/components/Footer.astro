@@ -2,12 +2,14 @@
 
 ---
 
-<footer class="bg-black flex flex-col justify-center items-center">
-  <span class="flex flex-row justify-center items-center mt-2">
+<footer class="border-t border-white/10 bg-background/90">
+  <div class="container-page flex flex-col items-center gap-4 py-8 text-center">
+  <span class="flex flex-row justify-center items-center gap-3">
     <a
       href="https://facebook.com/gentecomunicaciones"
       target="_blank"
-      class="text-white"
+      rel="noreferrer"
+      class="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
       title="Gente Comunicaciones en Facebook"
     >
       <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
@@ -20,7 +22,8 @@
     <a
       href="https://instagram.com/gentecomunicaciones"
       target="_blank"
-      class="text-white"
+      rel="noreferrer"
+      class="rounded-full border border-white/10 bg-white/5 p-2 text-white transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
       title="Gente Comunicaciones en Instagram"
     >
       <svg
@@ -42,13 +45,14 @@
       </svg>
     </a>
   </span>
-  <p class="text-white font-semibold">Gente Comunicaciones © 2024</p>
-  <p class="text-xs text-white italic mb-2">
+  <p class="text-sm font-semibold text-white">Gente Comunicaciones © 2024</p>
+  <p class="text-xs italic text-muted-foreground">
     Powered by
     <a
-      class="font-extrabold hover:text-sky-300 cursor-pointer"
+      class="cursor-pointer font-extrabold text-white hover:text-primary"
       href="https://www.felpysoluciones.com/"
       target="_blank"
+      rel="noreferrer"
       title="Felpy Soluciones"
     >
       Felpy Soluciones</a
@@ -56,10 +60,12 @@
       - Created by <a
         href="https://portfolio-elias-silk.vercel.app/"
         target="_blank"
+        rel="noreferrer"
         title="Cofla.Dev"
-        class="text-md bg-gradient-to-r from-blue-400 to-red-400 text-transparent bg-clip-text font-extrabold hover:text-sky-300 cursor-pointer"
+        class="cursor-pointer bg-gradient-to-r from-blue-300 to-red-300 bg-clip-text text-sm font-extrabold text-transparent"
         >Cofla.Dev</a
       ></span
     >
   </p>
+  </div>
 </footer>

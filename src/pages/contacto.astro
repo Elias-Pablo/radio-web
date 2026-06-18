@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
+import Badge from "../components/ui/Badge.astro";
+import Button from "../components/ui/Button.astro";
+import Card from "../components/ui/Card.astro";
 
 const socialLinks = [
   {
@@ -19,113 +22,116 @@ const socialLinks = [
     icon: "/brand-youtube.svg",
   },
 ];
+
+const contacts = [
+  {
+    name: "Lorena Contreras Ruz",
+    role: "Relaciones Comerciales",
+    phone: "+56988694401",
+    mail: "contacto@gentecomunicaciones.cl",
+  },
+  {
+    name: "Elías Bahamondes Contreras",
+    role: "Representante Legal",
+    phone: "+56988694401",
+    mail: "admin@gentecomunicaciones.cl",
+  },
+  {
+    name: "Luis Bahamondes Maturana",
+    role: "Área de Publicidad",
+    phone: "+56988694402",
+    mail: "ventas@gentecomunicaciones.cl",
+  },
+  {
+    name: "Vania Elizabeth Contreras",
+    role: "Área Programática",
+    phone: "+56955217762",
+    mail: "edicion@gentecomunicaciones.cl",
+  },
+];
 ---
 
 <Layout title="Contacto - Gente Comunicaciones">
-  <div
-    class="rounded-lg shadow-lg p-8 mx-auto space-y-8 flex justify-center items-center flex-col"
-  >
-    <div
-      class="bg-fuchsia-500 text-white rounded-xl shadow-xl lg:w-auto p-6 flex flex-col items-center"
-    >
-      <h3 class="text-2xl font-bold mb-6 text-center">
-        Síguenos en nuestras Redes Sociales
-      </h3>
-      <div class="flex justify-center space-x-8">
-        {
-          socialLinks.map((link) => (
-            <a
-              href={link.url}
-              target="_blank"
-              class="hover:scale-110 transition-transform duration-200 drop-shadow-xl"
-            >
-              <img src={link.icon} alt={link.name} class="w-10 h-10" />
-            </a>
-          ))
-        }
+  <main class="section-shell">
+    <div class="container-page space-y-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <Badge variant="accent">Hablemos</Badge>
+        <h1 class="mt-3 text-4xl font-black tracking-tight text-white sm:text-5xl">
+          Contacto
+        </h1>
+        <p class="mt-4 text-sm text-muted-foreground sm:text-base">
+          Conecta con nuestro equipo comercial, programático y editorial.
+        </p>
       </div>
-    </div>
 
-    <div
-      class="bg-orange-500 text-white w-full md:w-auto rounded-xl shadow-xl p-6"
-    >
-      <h3 class="text-2xl font-bold mb-6 text-center">Contáctanos</h3>
-      <div class="space-y-6">
-        {
-          [
-            {
-              name: "Lorena Contreras Ruz",
-              role: "Relaciones Comerciales",
-              phone: "+56988694401",
-              mail: "contacto@gentecomunicaciones.cl",
-            },
-            {
-              name: "Elías Bahamondes Contreras",
-              role: "Representante Legal",
-              phone: "+56988694401",
-              mail: "admin@gentecomunicaciones.cl",
-            },
-            {
-              name: "Luis Bahamondes Maturana",
-              role: "Área de Publicidad",
-              phone: "+56988694402",
-              mail: "ventas@gentecomunicaciones.cl",
-            },
-            {
-              name: "Vania Elizabeth Contreras",
-              role: "Área Programática",
-              phone: "+56955217762",
-              mail: "edicion@gentecomunicaciones.cl",
-            },
-          ].map((contact, index) => (
-            <div class="flex flex-col md:flex-row justify-between items-center gap-10">
-              <p class="text-md  text-center w-full font-semibold">
-                {contact.name}
-              </p>
-              <p class="text-center italic">{contact.role}</p>
-              <div class="flex flex-col md:flex-row justify-center w-auto md:w-2/3 gap-5">
-                <a
-                  href={`tel:${contact.phone}`}
-                  class="text-sky-300 hover:text-sky-500 hover:underline text-center"
-                >
-                  {contact.phone}
-                </a>
-                <span class="text-white hidden ">/</span>
-                <a
-                  href={`mailto:${contact.mail}`}
-                  class="text-sky-300 hover:text-sky-500 hover:underline text-center"
-                >
-                  {contact.mail}
-                </a>
-                <hr class="w-full border border-white my-4 md:hidden" />
+      <Card class="glass-panel p-6 text-center">
+        <h2 class="text-2xl font-black text-white">Síguenos en redes sociales</h2>
+        <div class="mt-6 flex justify-center gap-4">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-1 hover:border-primary/50 hover:bg-primary/15"
+                title={`Gente Comunicaciones en ${link.name}`}
+              >
+                <img src={link.icon} alt={link.name} class="h-10 w-10" />
+              </a>
+            ))
+          }
+        </div>
+      </Card>
+
+      <Card class="glass-panel p-6">
+        <div class="mb-6 text-center">
+          <Badge variant="secondary">Equipo</Badge>
+          <h2 class="mt-3 text-2xl font-black text-white">Contáctanos</h2>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2">
+          {
+            contacts.map((contact) => (
+              <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+                <p class="font-black text-white">{contact.name}</p>
+                <p class="mt-1 text-sm text-muted-foreground">{contact.role}</p>
+                <div class="mt-4 flex flex-col gap-2 sm:flex-row">
+                  <Button href={`tel:${contact.phone}`} variant="outline" size="sm">
+                    {contact.phone}
+                  </Button>
+                  <Button href={`mailto:${contact.mail}`} variant="secondary" size="sm">
+                    Email
+                  </Button>
+                </div>
+                <p class="mt-3 break-all text-xs text-muted-foreground">{contact.mail}</p>
               </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+            ))
+          }
+        </div>
+      </Card>
 
-    <div
-      class="bg-green-500 text-white rounded-xl shadow-xl p-6 md:w-1/2 w-full"
-    >
-      <h3 class="text-2xl font-bold mb-4 text-center">Nuestra Ubicación</h3>
-      <p class="text-center mb-4">
-        José Bisquertt N°426 - Oficina 2, Rengo, Chile
-      </p>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13458.345156188498!2d-70.865077!3d-34.407531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI0JzI3LjAiUyA3MMKwNTEnNTQuMCJX!5e0!3m2!1ses!2s!4v1603312179342!5m2!1ses!2s"
-        width="100%"
-        height="300"
-        frameborder="0"
-        style="border:0;"
-        allowfullscreen=""
-        aria-hidden="false"
-        loading="lazy"
-        tabindex="0"
-        title="Ubicación de Gente Comunicaciones"
-        class="mt-2 border border-gray-300 rounded-md"></iframe>
+      <Card class="glass-panel overflow-hidden">
+        <div class="p-6 text-center">
+          <Badge variant="default">Ubicación</Badge>
+          <h2 class="mt-3 text-2xl font-black text-white">Nuestra ubicación</h2>
+          <p class="mt-2 text-muted-foreground">
+            José Bisquertt N°426 - Oficina 2, Rengo, Chile
+          </p>
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13458.345156188498!2d-70.865077!3d-34.407531!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDI0JzI3LjAiUyA3MMKwNTEnNTQuMCJX!5e0!3m2!1ses!2s!4v1603312179342!5m2!1ses!2s"
+          width="100%"
+          height="360"
+          frameborder="0"
+          style="border:0;"
+          allowfullscreen=""
+          aria-hidden="false"
+          loading="lazy"
+          tabindex="0"
+          title="Ubicación de Gente Comunicaciones"
+          class="min-h-80 w-full border-t border-white/10"></iframe>
+      </Card>
     </div>
-  </div>
+  </main>
 
   <Footer />
 </Layout>
